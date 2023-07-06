@@ -37,10 +37,10 @@
                  </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">M'inscrire</a>
+                    <a class="nav-link" href={{ path('app_register') }}>M'inscrire</a>
                  </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="#">Me connecter</a>
+                    <a class="nav-link" href="{{ path('app_login') }}">Me connecter</a>
                  </li>
                 {% endif %}
             </ul>
