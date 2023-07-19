@@ -7,14 +7,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- Feuilles de styles -->
-		<link rel="stylesheet" href="{{ asset('Assets/css/bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
         {% block stylesheets %}{% endblock %}
-		<link rel="stylesheet" href="{{ asset('Assets/css/styles.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 
 		<!-- Fichiers JS -->
-		<script src="{{ asset('Assets/js/bootstrap.bundle.min.js') }}" defer></script>
+		<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
 		{% block javascripts %}{% endblock %}
-		<script src="{{ asset('Assets/js/scripts.js') }}" defer></script>
+		<script src="{{ asset('assets/js/scripts.js') }}" defer></script>
 	</head>
 	<body>
         {% include "_partials/_nav.html.twig" %}
@@ -23,7 +23,7 @@
 			<div class="alert alert-warning alert-dismissible" role="alert">
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				<div class="alert-message">
-					<strong>Votre compte n'est pas activé</strong>, <a href="#">renvoyer le lien d'activation</a>
+					<strong>Votre compte n'est pas activé</strong>, <a href="{{ path('resend_verif') }}">renvoyer le lien d'activation</a>
 				</div>
 			</div>
 		{% endif %}
