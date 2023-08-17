@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use CreatedAtTrait;
-    
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -51,7 +51,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $is_verified = false;
 
-    #[ORM\Column(type: 'string', length: 100)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $resetToken;
 
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Orders::class)]

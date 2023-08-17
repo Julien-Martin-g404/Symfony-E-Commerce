@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Categories
 {
     use SlugTrait;
-    
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -139,5 +139,11 @@ class Categories
         }
 
         return $this;
+    }
+
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

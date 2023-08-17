@@ -44,6 +44,8 @@ security:
         ROLE_ADMIN: ROLE_PRODUCT_ADMIN
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
+    access_denied_url: /admin_denied
+
 when@test:
     security:
         password_hashers:

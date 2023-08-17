@@ -25,17 +25,18 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+
+
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
-            $userPasswordHasher->hashPassword(
+                $userPasswordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
                 )
             );
 
-            $entityManager->persist($user);
-            $entityManager->flush();
+            
             // do anything else you need here, like send an email
 
             // On génère le JWT de l'utilisateur
@@ -53,7 +54,7 @@ class RegistrationController extends AbstractController
             // On génère le token
             $token = $jwt->generate($header, $payload, $this->getParameter('app.jwtsecret'));
 
-            // On envoie un mail
+            // // On envoie un mail
             $mail->send(
                 'no-reply@monsite.net',
                 $user->getEmail(),
@@ -62,11 +63,12 @@ class RegistrationController extends AbstractController
                 compact('user', 'token')
             );
 
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
-            );
+            $user->setResetToken($token);
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            
         }
 
         return $this->render('registration/register.html.twig', [
@@ -78,15 +80,18 @@ class RegistrationController extends AbstractController
     public function verifyUser($token, JWTService $jwt, UsersRepository $usersRepository, EntityManagerInterface $em): Response
     {
         //On vérifie si le token est valide, n'a pas expiré et n'a pas été modifié
-        if($jwt->isValid($token) && !$jwt->isExpired($token) && $jwt->check($token, $this->getParameter('app.jwtsecret'))){
+        if ($jwt->isValid($token) && !$jwt->isExpired($token) && $jwt->check($token, $this->getParameter('app.jwtsecret'))) {
             // On récupère le payload
             $payload = $jwt->getPayload($token);
 
             // On récupère le user du token
-            $user = $usersRepository->find($payload['user_id']);
+            /** @var User $user */
+            $user = $this->getUser();
+
+            // dd($user);
 
             //On vérifie que l'utilisateur existe et n'a pas encore activé son compte
-            if($user && !$user->getIsVerified()){
+            if ($user && !$user->getIsVerified()) {
                 $user->setIsVerified(true);
                 $em->flush($user);
                 $this->addFlash('success', 'Utilisateur activé');
@@ -103,14 +108,14 @@ class RegistrationController extends AbstractController
     {
         $user = $this->getUser();
 
-        if(!$user){
+        if (!$user) {
             $this->addFlash('danger', 'Vous devez être connecté pour accéder à cette page');
-            return $this->redirectToRoute('app_login');    
+            return $this->redirectToRoute('app_login');
         }
 
-        if($user->getIsVerified()){
+        if ($user->getIsVerified()) {
             $this->addFlash('warning', 'Cet utilisateur est déjà activé');
-            return $this->redirectToRoute('profile_index');    
+            return $this->redirectToRoute('profile_index');
         }
 
         // On génère le JWT de l'utilisateur

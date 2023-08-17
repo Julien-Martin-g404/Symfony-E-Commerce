@@ -11,7 +11,9 @@ class CategoriesFixtures extends Fixture
 {
     private $counter = 1;
 
-    public function __construct(private SluggerInterface $slugger){}
+    public function __construct(private SluggerInterface $slugger)
+    {
+    }
 
     public function load(ObjectManager $manager): void
     {
@@ -26,7 +28,7 @@ class CategoriesFixtures extends Fixture
         $this->createCategory('Reflex', $parent, $manager);
         $this->createCategory('Hybride', $parent, $manager);
         $this->createCategory('Compacts/Bridge', $parent, $manager);
-        
+
 
         $manager->flush();
     }
@@ -39,7 +41,7 @@ class CategoriesFixtures extends Fixture
         $category->setParent($parent);
         $manager->persist($category);
 
-        $this->addReference('cat-'.$this->counter, $category);
+        $this->addReference('cat-' . $this->counter, $category);
         $this->counter++;
 
         return $category;

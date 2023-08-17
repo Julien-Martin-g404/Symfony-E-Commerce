@@ -19,8 +19,12 @@ class CategoriesController extends AbstractController
         $page = $request->query->getInt('page', 1);
 
         //On va chercher la liste des produits de la catégorie
-        $products = $productsRepository->findProductsPaginated($page, 
-        $category->getSlug(), 5);
+        $products = $productsRepository->findProductsPaginated(
+            $page,
+            $category->getSlug(),
+            5
+        );
+        // dd($products['data'][1]->getImages()->getValues());
 
         return $this->render('categories/list.html.twig', compact('category', 'products'));
         // Syntaxe alternative
