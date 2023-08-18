@@ -8,8 +8,7 @@
             <div class="col-12">
                 <h1>Liste des produits de la catégorie {{ category.name }}</h1>
             </div>
-            
-            {% if products.data is empty %}
+            {% if products is empty %}
                 <div class="col-12">
                     <p>Il n'y a pas de produit dans la catégorie {{ category.name }}.</p>
                 </div>
@@ -17,9 +16,14 @@
                 {% for product in products.data %}
                     <div class="col-3 mb-3">
                         <article class="card h-100">
-                            <div class="card-product-miniature">
-                                <img src="{{ asset('assets/uploads/products/' ~ product.images[0].name ) }}" class="card-img-top" alt="{{ product.name }}">               
-                            </div>
+                            {% if product.images[0] is defined %}
+                                <div class="card-product-miniature">                   
+                                    <img src="{{ asset('assets/uploads/products/' ~ product.images[0].name ) }}" class="card-img-top" alt="{{ product.name }}">      
+                                </div>
+                            {% else %}
+                                <div class="card-product-miniature noImage">                   
+                                </div>
+                            {% endif %}  
                             <div class="card-body">
                                 <h2 class="card-title">{{ product.name }}</h2>
                                 <p class="card-text">{{ product.description|raw }}</p>

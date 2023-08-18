@@ -67,3 +67,7 @@ label {
     height: 100%;
     width: 100%;
 }
+
+.noImage{
+    background-color: rgb(176, 176, 176) !important;
+}

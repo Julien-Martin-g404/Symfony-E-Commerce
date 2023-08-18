@@ -29,7 +29,7 @@ class ProductsCrudController extends AbstractCrudController
             NumberField::new('price'),
             NumberField::new('stock'),
             DateTimeField::new('created_at'),
-            CollectionField::new('images')->useEntryCrudForm(ImagesCrudController::class)->setRequired(true)
+            CollectionField::new('images')->useEntryCrudForm(ImagesCrudController::class)
         ];
     }
 }
