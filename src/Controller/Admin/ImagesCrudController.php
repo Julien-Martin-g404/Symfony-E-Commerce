@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Images;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -17,10 +18,12 @@ class ImagesCrudController extends AbstractCrudController
         return Images::class;
     }
 
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new(''),
+            
+            TextField::new('origin_name'),
             ImageField::new('name')->setUploadedFileNamePattern('[uuid].png')->setUploadDir('public/assets/uploads/products')->onlyOnForms(),
             TextField::new('name')->onlyOnDetail()->onlyOnIndex(),
         ];

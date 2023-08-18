@@ -15,10 +15,19 @@ class Images
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
-
+     
     #[ORM\ManyToOne(inversedBy: 'images')]
     #[ORM\JoinColumn(nullable: false)]
+    
     private ?Products $products = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $origin_name = null;
+
+    public function __toString()
+    {
+        return $this->getOriginName();
+    }
 
     public function getId(): ?int
     {
@@ -45,6 +54,18 @@ class Images
     public function setProducts(?Products $products): static
     {
         $this->products = $products;
+
+        return $this;
+    }
+
+    public function getOriginName(): ?string
+    {
+        return $this->origin_name;
+    }
+
+    public function setOriginName(?string $origin_name): static
+    {
+        $this->origin_name = $origin_name;
 
         return $this;
     }
