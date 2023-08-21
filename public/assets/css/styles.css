@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
+
 .form-control {
 
     margin-top: 15px;
@@ -70,4 +72,40 @@ label {
 
 .noImage{
     background-color: rgb(176, 176, 176) !important;
+}
+
+.panier {
+
+    width: 35px;
+    height: 35px;
+}
+
+.colonnes {
+
+    width: 25%;
+    margin:0;
+
+}
+
+footer {
+    flex-shrink: 0;
+    border-top: 1px dashed #000;
+    width: 100%;
+    background-color: #40826D;
+    color: white;
+}
+
+.contenu-footer {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* aligner en haut */
+    padding: 50px 0 100px;
+}
+
+.titre{
+
+    font-family: 'Comic Neue', cursive;
+    font-weight: 700;
 }

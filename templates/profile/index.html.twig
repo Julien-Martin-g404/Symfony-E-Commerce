@@ -1,20 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfileController!{% endblock %}
+{% block title %}Profil Utilisateur{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/opt/lampp/htdocs/ProjetFinal/Ecommerce/src/Controller/ProfileController.php'|file_link(0) }}">src/Controller/ProfileController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/opt/lampp/htdocs/ProjetFinal/Ecommerce/templates/profile/index.html.twig'|file_link(0) }}">templates/profile/index.html.twig</a></code></li>
-    </ul>
+<div class="container justify-content-center ">
+    {% set currentHour = "now"|date("H") %}
+    {% if currentHour < 18 %}
+        <h1 class="d-flex justify-content-center">Bonjour, {{ app.user.lastname }} {{ app.user.firstname }}</h1>
+    {% else %}
+        <h1 class="d-flex justify-content-center">Bonsoir, {{ app.user.lastname }} {{ app.user.firstname }}</h1>
+    {% endif %}
+    
+    {{ form_start(form) }}
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+        {{ form_label(form.lastname) }}
+        {{ form_widget(form.lastname) }}
+        {{ form_label(form.firstname) }}
+        {{ form_widget(form.firstname) }}
+        {{ form_label(form.address) }}
+        {{ form_widget(form.address) }}
+        {{ form_label(form.zipcode) }}
+        {{ form_widget(form.zipcode) }}
+        {{ form_label(form.city) }}
+        {{ form_widget(form.city) }}
+        {{ form_rest(form) }}
+        <button type="submit">Enregistrer</button>
+    {{ form_end(form) }}
 </div>
 {% endblock %}
