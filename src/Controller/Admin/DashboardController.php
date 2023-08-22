@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Categories;
+use App\Entity\Contact;
 use App\Entity\Images;
 use App\Entity\Orders;
 use App\Entity\OrdersDetails;
@@ -55,12 +56,21 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        yield MenuItem::section('Home');
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+
+        yield MenuItem::section('Users');
         yield MenuItem::linkToCrud('Users', 'fas fa-user', Users::class);
-        yield MenuItem::linkToCrud('Categories', 'fas fa-list', Categories::class);
-        yield MenuItem::linkToCrud('Products', 'fas fa-list', Products::class);
-        yield MenuItem::linkToCrud('Orders', 'fas fa-list', Orders::class);
+
+        yield MenuItem::section('Products');
+        yield MenuItem::linkToCrud('Categories', 'fa fa-tag', Categories::class);
+        yield MenuItem::linkToCrud('Products', 'fa fa-industry', Products::class);
+
+        yield MenuItem::section('Orders');
+        yield MenuItem::linkToCrud('Orders', 'fa fa-shopping-bag', Orders::class);
         yield MenuItem::linkToCrud('OrdersDetails', 'fas fa-list', OrdersDetails::class);
-        // yield MenuItem::linkToCrud('Images', 'fas fa-images', Images::class);
+
+        yield MenuItem::section('Contact');
+        yield MenuItem::linkToCrud('Contact', 'fa fa-envelope', Contact::class);
     }
 }

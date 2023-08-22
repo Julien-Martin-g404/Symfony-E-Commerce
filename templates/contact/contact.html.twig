@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container d-flex justify-content-center">
+        <div class="mt-5 formContact">
+            <h2 class="h3 mb-3 font-weight-normal">Contact</h2>
+            {{ form_errors(formContact) }}
+
+            {{ form_start(formContact) }}
+                <div class="mb-3 d-flex">
+                    <div class="me-3">
+                        {{ form_label(formContact.firstname) }}
+                        {{ form_widget(formContact.firstname) }}
+                    </div>
+                    <div>
+                        {{ form_label(formContact.lastname) }}
+                        {{ form_widget(formContact.lastname) }}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    {{ form_label(formContact.mail) }}
+                    {{ form_widget(formContact.mail) }}
+                    <div id="emailhelp" class="form-text">Nous ne partagerons votre mail avec personne !</div>
+                </div>
+                <div class="mb-3">
+                    {{ form_label(formContact.subject) }}
+                    {{ form_widget(formContact.subject) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(formContact.message) }}
+                    {{ form_widget(formContact.message) }}
+                </div>
+                <button type="submit" class="btn btn-primary mb-5 mt-3">Envoyer</button>
+            {{ form_end(formContact) }}
+        </div>
+    </div>
+
+{% endblock %}
