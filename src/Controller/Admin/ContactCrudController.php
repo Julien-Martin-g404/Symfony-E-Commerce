@@ -24,6 +24,9 @@ class ContactCrudController extends AbstractCrudController
             TextField::new('subject'),
             TextEditorField::new('message'),
             DateTimeField::new('sendAt')
+            ->setFormat('dd MMMM yyyy HH:mm:ss')
+            
+            
         ];
     }
 }
