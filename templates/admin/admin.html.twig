@@ -1,9 +1,20 @@
 {% extends '@EasyAdmin/page/content.html.twig' %}
 
-{% block content_title %}The Title of the Page{% endblock %}
+
+		
+
+{% block content_title %}
+<div class="headerAdmin">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <img src="{{ asset('assets/uploads/Logo.png/') }}"  alt="logo" class="logos">
+    <h3>Bienvenue sur le panneau administrateur</h3>
+</div>
+
+{% endblock %}
 {% block page_actions %}
 {% endblock %}
 
 {% block main %}
+
     
 {% endblock %}
