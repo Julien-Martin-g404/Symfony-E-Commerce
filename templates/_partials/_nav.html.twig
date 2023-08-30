@@ -1,24 +1,27 @@
-<nav class="taille  navbar-expand-lg  bg-primary align-items-start">
-  <button class=" navbar navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="navbar-logo">
+<nav class="taille navbar-expand-lg bg-primary">
+  <div class="navbar-logo-custom">
     <a href="{{ path('main') }}">
       <img src="{{ asset('assets/uploads/Logo.png') }}" alt="Logo" class="logo">
     </a>    
   </div>
-  <div class="collapse navbar-collapse marge" id="navbarNav">
-    {% set categories = categories() %}
-    <ul class="navbar-nav flex-column">
-      {% for category in categories %}
+  <div class="categoriesNav" id="navbarNav">
+    {% set parentsCategories = parentsCategories() %}
+    {% set childsCategories = childsCategories() %}
+
+    {% for parentCategory in parentsCategories %}
+      <ul class="navbar-nav flex-column categoriesItems">
         <li class="nav-item">
-          {% if category.parent == null %}
-            <h2 class="category-item">{{ category.name }}</h2>
-          {% else %}
-            <a href="{{ path('categories_list', {slug: category.slug}) }}" class="btn btn-primary mt-3 "><h2 class="category-items">{{ category.name }}</h2></a>
-          {% endif %}
+          <h2 class="category-item">{{ parentCategory.name }}</h2>
         </li>
-      {% endfor %}
-    </ul>
+        {% for childCategory in childsCategories %}
+          {% if childCategory.parent == parentCategory.name %}
+            <li class="nav-item">
+              <a href="{{ path('categories_list', {slug: childCategory.slug}) }}" class="btn btn-primary categoriesLinks"><h2 class="category-items">{{ childCategory.name }}</h2></a>
+            </li>
+          {% endif %}
+        {% endfor %}
+
+      </ul>
+    {% endfor %}
   </div>
 </nav>

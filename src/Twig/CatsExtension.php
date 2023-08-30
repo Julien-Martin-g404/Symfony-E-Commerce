@@ -19,11 +19,16 @@ class CatsExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('categories', [$this, 'getCategories'])
+            new TwigFunction('parentsCategories', [$this, 'getParentsCategories']),
+            new TwigFunction('childsCategories', [$this, 'getChildsCategories'])
         ];
     }
-    public function getCategories()
+    public function getParentsCategories()
     {
-        return $this->em->getRepository(Categories::class)->findby([], ['categoryOrder' =>'asc']);
+        return $this->em->getRepository(Categories::class)->findParentsCategories();
+    }
+    public function getChildsCategories()
+    {
+        return $this->em->getRepository(Categories::class)->findNotParentsCategories();
     }
 }

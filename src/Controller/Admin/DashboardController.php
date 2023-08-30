@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Carrousel;
 use App\Entity\Categories;
 use App\Entity\Contact;
 use App\Entity\Images;
@@ -69,6 +70,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Orders');
         yield MenuItem::linkToCrud('Orders', 'fa fa-shopping-bag', Orders::class);
         yield MenuItem::linkToCrud('OrdersDetails', 'fas fa-list', OrdersDetails::class);
+
+        yield MenuItem::section('Carrousel');
+        yield MenuItem::linkToCrud('Images', 'fas fa-images', Carrousel::class);
 
         yield MenuItem::section('Contact');
         yield MenuItem::linkToCrud('Contact', 'fa fa-envelope', Contact::class);

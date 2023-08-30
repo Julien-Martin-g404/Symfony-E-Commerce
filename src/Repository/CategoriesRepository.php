@@ -39,6 +39,29 @@ class CategoriesRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+    * @return Categories[] Returns an array of Categories objects
+    */
+    public function findParentsCategories() : array
+    {
+
+        return $this->createQueryBuilder('c')
+            ->andWhere("c.parent IS NULL")
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+    * @return Categories[] Returns an array of Categories objects
+    */
+    public function findNotParentsCategories() : array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.parent IS NOT NULL')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Categories[] Returns an array of Categories objects
 //     */

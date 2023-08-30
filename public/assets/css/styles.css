@@ -1,12 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
 
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    min-height: 100vh;
+}
+
 .taille{
 
     width: 15vw;
-    height: 100vh;
-    position:fixed;
-    left: 0; 
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 0;
     border-right: 2px solid rgb(0, 42, 255);
 
 }
@@ -23,13 +34,13 @@
 
 }
 
-.header {
+chekbox {
 
-    width: auto;
-    height: auto;
-    margin-left: 0;
-    border-bottom: 2px solid rgb(0, 42, 255);
-    
+
+}
+
+header {
+    border-bottom: 2px solid rgb(0, 42, 255);    
 }
 
 .navbar-logo {
@@ -57,15 +68,21 @@
 
 .category-item {
     font-size: 28px;
-    margin-top: 50px;
     font-family: 'Comic Neue', cursive;
     font-weight: 700;
+
   }
+
+.categoriesItems {
+    margin-top: 40px;
+}
   
   .category-items {
     font-size: 20px;
     font-family: 'Comic Neue', cursive;
     font-weight: 700;
+    list-style: none;
+    padding-left: 0;
   }
 
 .headerAdmin{
@@ -153,16 +170,16 @@ label {
 
     width: 30px;
     height: 30px;
-    margin-right: 15px;
-    margin-left: 5px;
-    margin-top: 5px;
+}
+
+.panier img {
+    width: 100%;
+    height: auto;
 }
 
 .colonnes {
-
     width: 25%;
     margin: 0;
-
 }
 
 .formContact {
@@ -173,7 +190,7 @@ label {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    width: 85vw;
+    width: 85vw; 
     margin-left: 15vw;
     overflow-y: auto;
 }
@@ -195,4 +212,200 @@ h1{
     font-size: 30px;
     margin-top : 30px;
     margin-bottom: 30px;
+}
+
+#carouselExampleAutoplaying{
+    width: 50%;
+}
+
+.homeController{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.carousel-item{
+    height: 40vh;
+}
+
+.carousel-item img{
+    object-fit: contain !important;
+    height: 100%;
+    width: 100%;
+}
+
+.navbar-logo-custom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+
+}
+
+.categoriesNav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 1580px){
+   
+    .category-items{
+        font-size: 17px;
+    }
+
+    .category-item{
+        font-size: 25px;
+    }
+
+    .logo{
+        width: 90px;
+        height: 90px;
+    }
+
+    .homeController{
+        width: 70vw;
+    }
+
+
+}
+
+@media (max-width: 1280px){
+   
+    .category-items{
+        font-size: 15px;
+    }
+
+    .category-item{
+        font-size: 23px;
+    }
+
+    .taille{
+        width: 20vw;
+    }
+
+    .wrappers{
+        width: 80vw;
+        margin-left: 20vw;
+    }
+
+    .homeController{
+        width: 67vw;
+        padding: 0;
+    }
+
+
+}
+
+@media (max-width: 1000px){
+   
+    .category-items{
+        font-size: 13px;
+    }
+
+    .category-item{
+        font-size: 20px;
+    }
+
+
+}
+
+@media (max-width: 768px){
+   
+    .category-items{
+        font-size: 18px;
+    }
+
+    .category-item{
+        font-size: 20px;
+    }
+
+    .categoriesItems {
+        margin-top: 0px;
+    }
+
+    .panier{
+        width: 25px;
+        height: 25px;
+    }
+
+    .taille{
+        width: 100vw;
+        height: auto;
+        position: fixed;
+        bottom:0;
+        left:0;
+        right:0;
+        z-index: 1;
+        /* top: 80vh; */
+        top:unset;
+        display: flex;
+        align-items: center;
+        padding-top: 10px;
+    }
+
+    .categoriesNav{
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .categoriesNav .category-item{
+        margin: 0;
+    }
+
+    .categoriesNav .category-items{
+        margin: 0;
+    }
+
+    /* .categoriesNav>ul>li>a{
+        margin: 0;
+    } */
+
+    .categoriesLinks{
+        margin: 0;
+    }
+
+    .navbar-logo-custom{
+        width: 80px;
+        height: 80px;
+        margin-top: 0;
+        margin-left: 10px;
+    }
+
+    .navbar-logo-custom img{
+        width: 80px;
+        height: 80px;
+    }
+
+    /* #navbarNav{
+        display: flex;
+    } */
+
+    .wrappers{
+        width: 100vw;
+        margin-left: 0;
+    }
+
+    #carouselExampleAutoplaying{
+        width: 80vw;
+    }
+
+    .footer {
+        margin-bottom: 20vh;
+    }
+
+}
+
+@media (max-width: 576px){
+   
+    .category-items{
+        font-size: 13px;
+    }
+
+    .panier{
+        width: 16px;
+        height: 16px;
+    }
+
 }

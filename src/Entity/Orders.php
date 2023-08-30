@@ -38,6 +38,11 @@ class Orders
 
     }
 
+    public function __toString()
+    {
+        return $this->id . ' - ' . $this->reference;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
