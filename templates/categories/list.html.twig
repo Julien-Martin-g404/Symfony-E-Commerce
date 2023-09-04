@@ -15,10 +15,10 @@
             {% else %}
                 {% for product in products.data %}
                     <div class="col-lg-3 col-md-5 col-8 mb-3">
-                        <article class="card h-100">
+                        <article class="card lg-h-75 md-h-100">
                             {% if product.images[0] is defined %}
                                 <div class="card-product-miniature">                   
-                                    <img src="{{ asset('assets/uploads/products/' ~ product.images[0].name ) }}" class="card-img-top" alt="{{ product.name }}">      
+                                    <img src="{{ asset('assets/uploads/products/' ~ product.images[0].name ) }}"  alt="{{ product.name }}">      
                                 </div>
                             {% else %}
                                 <div class="card-product-miniature noImage">                   
@@ -26,6 +26,8 @@
                             {% endif %}  
                             <div class="card-body">
                                 <h2 class="card-title">{{ product.name }}</h2>
+                                <h5>Prix : {{ (product.price / 100)|number_format(2, '.', ',') }} €</h5>
+
                                 <a href="{{ path('products_details', {"slug": product.slug }) }}" class="btn btn-primary">Voir les détails</a>
                             </div>
                         </article>

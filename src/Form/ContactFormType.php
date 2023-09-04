@@ -21,7 +21,7 @@ class ContactFormType extends AbstractType
                     'class' => 'form-label'
                 ],
                 'attr' => [
-                    'placeholder' => 'Ecrivez ici votre prénom !',
+                    'placeholder' => 'Votre prénom !',
                     'class' => 'form-control'
                 ]
             ])
@@ -31,7 +31,7 @@ class ContactFormType extends AbstractType
                     'class' => 'form-label'
                 ],
                 'attr' => [
-                    'placeholder' => 'Ecrivez ici votre nom !',
+                    'placeholder' => 'Votre nom !',
                     'class' => 'form-control'
                 ]
             ])
@@ -41,7 +41,7 @@ class ContactFormType extends AbstractType
                     'class' => 'form-label'
                 ],
                 'attr' => [
-                    'placeholder' => 'Ecrivez ici votre email !',
+                    'placeholder' => 'Votre adresse email !',
                     'class' => 'form-control'
                 ]
             ])
@@ -51,7 +51,7 @@ class ContactFormType extends AbstractType
                     'class' => 'form-label'
                 ],
                 'attr' => [
-                    'placeholder' => 'Renseignez-nous le sujet de votre email... ',
+                    'placeholder' => 'Sujet de votre mail... ',
                     'class' => 'form-control'
                 ]
             ])
@@ -61,7 +61,7 @@ class ContactFormType extends AbstractType
                     'class' => 'form-label'
                 ],
                 'attr' => [
-                    'placeholder' => 'Ecrivez ici votre message !',
+                    'placeholder' => 'Votre message !',
                     'class' => 'form-control'
                 ]
             ])
